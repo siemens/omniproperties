@@ -1,36 +1,87 @@
-<!--
-Copyright Siemens AG, 2014
+<!-- Copyright Siemens AG, 2014 Licensed under the Apache License, Version 
+	2.0 the "License"; you may not use this file except in compliance with the 
+	License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+	Unless required by applicable law or agreed to in writing, software distributed 
+	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
+	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+	the specific language governing permissions and limitations under the License. -->
 
-Licensed under the Apache License, Version 2.0 the "License";
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
 
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
- limitations under the License. 
--->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.siemns.oss.omniproperties</groupId>
 	<artifactId>omniproperties</artifactId>
-	<version>2.7.11-SNAPSHOT</version>
+	<version>3.0.0-SNAPSHOT</version>
+	<groupId>com.siemens.oss.omniproperties</groupId>
+	<name>OmniProperties</name>
+	<organization>
+		<name>Siemens AG</name>
+		<url>www.siemens.com</url>
+	</organization>
 
 	<properties>
 		<javaSource>1.7</javaSource>
 		<javaTarget>1.7</javaTarget>
 		<junitVersion>4.11</junitVersion>
 		<slf4jVersion>1.7.5</slf4jVersion>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	
-	<scm>
-		<developerConnection>scm:git:git@github.com:siemens/omniproperties.git</developerConnection>
-	</scm>
 
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
+
+	<description>OmniProperties is a typed, lightweight configuration utility with a flavor of dependency injection.</description>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+	</licenses>
+	<url>http://github.com/siemens/omniproperties</url>
+	<distributionManagement>
+		<repository>
+			<id>sonatype-nexus-staging</id>
+			<name>Sonatype OSS Maven Repository : Releases</name>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+		<snapshotRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype OSS Maven Repository : Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+
+		</snapshotRepository>
+	</distributionManagement>
+	<developers>
+		<developer>
+			<id>mgeipel</id>
+			<name>Markus Michael Geipel</name>
+			<email>markus.geipel@siemens.com</email>
+			<url></url>
+			<organization>Siemens Corporate Technology</organization>
+			<organizationUrl>www.siemens.com</organizationUrl>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<id></id>
+			<name>Dieter Bogdoll</name>
+			<email>dieter.bogdoll@siemens.com</email>
+			<url></url>
+			<organization>Siemens Corporate Technology</organization>
+			<organizationUrl>www.siemens.com</organizationUrl>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+	</developers>
 
 	<build>
 		<plugins>
@@ -92,6 +143,9 @@ See the License for the specific language governing permissions and
 							<!-- Specifies the main class of the application -->
 							<mainClass>com.siemens.oss.omniproperties.Run</mainClass>
 						</manifest>
+						<manifestEntries>
+							<git-commit>${buildNumber}</git-commit>
+						</manifestEntries>
 					</archive>
 				</configuration>
 			</plugin>
@@ -129,6 +183,8 @@ See the License for the specific language governing permissions and
 
 	</build>
 
+
+
 	<dependencies>
 		<dependency>
 			<groupId>org.antlr</groupId>
@@ -152,6 +208,12 @@ See the License for the specific language governing permissions and
 			<version>1.7.5</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.cthul</groupId> -->
+		<!-- <artifactId>cthul-matchers</artifactId> -->
+		<!-- <version>1.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>net.sf.oval</groupId>
 			<artifactId>oval</artifactId>
@@ -169,4 +231,61 @@ See the License for the specific language governing permissions and
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>sonatype-oss-release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.8</version>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<phase>package</phase>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+								<configuration>
+									<show>public</show>
+									<nohelp>true</nohelp>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>2.1.2</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.4</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 </project>
