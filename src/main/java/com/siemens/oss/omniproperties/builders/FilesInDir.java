@@ -31,6 +31,11 @@ public class FilesInDir implements ObjectBuilder<File[]> {
 	final private File dir;
 	private String suffix;
 
+	
+	public FilesInDir(final File dir) {
+		this.dir = dir;
+	}
+	
 	public FilesInDir(final String path) {
 		this.dir = new File(path);
 	}
