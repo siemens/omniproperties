@@ -165,15 +165,21 @@ Every getter has a sibling method which takes a default value. Furthermore, ther
 ### A Closer Look at Object Creation
 
 During object creation OmniProperties performs the following steps:
+
 1. The class name is looked up in the shortcut map (see next section). If no shortcut is found, the name is interpreted as fully qualified class name.
+
 2. The appropriate constructor is loaded and invoked to create a new object.
+
 3. If parameters are given in square brackets they are mapped to setter method invocations. If no setter is found, OmniProperties searches for a field with the respective names and injects the given values. 
 As last resort, OmniProperties searches for a `put(String, Object)` method and invokes it (thus `Map` s can by constructed with square bracket notation).
+
 4. If the class implements the `Initializable` interface, the `init()` method is invoked.
+
 5. The object is validated (see section Validation).
+
 6. If the object is an instance of the `ObjectBuilder` interface, the `build()` method is invoked and its result returned as object. Otherwise, the object is returned directly. (see section Builders)
 
-The following section provide more details...
+The following sections provide more details...
 
 #### Class Shortcuts
 Shortcuts for class names can be defined in `omniproperties-class-shortcuts.properties`. Every file on the class path root with this name will be taken into account. 
