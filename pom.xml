@@ -7,11 +7,10 @@
 	the specific language governing permissions and limitations under the License. -->
 
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>omniproperties</artifactId>
-	<version>3.0.0-SNAPSHOT</version>
+	<version>3.0.0</version>
 	<groupId>com.siemens.oss.omniproperties</groupId>
 	<name>OmniProperties</name>
 	<organization>
@@ -37,7 +36,7 @@
 		<connection>scm:git:git://github.com/siemens/omniproperties.git</connection>
 		<developerConnection>scm:git:git@github.com:siemens/omniproperties.git</developerConnection>
 		<url>http://github.com/siemens/omniproperties</url>
-		<tag>HEAD</tag>
+		<tag>omniproperties-3.0.0</tag>
 	</scm>
 
 	<description>OmniProperties is a typed, lightweight configuration utility with a flavor of dependency injection.</description>
@@ -66,7 +65,7 @@
 			<id>mgeipel</id>
 			<name>Markus Michael Geipel</name>
 			<email>markus.geipel@siemens.com</email>
-			<url></url>
+			<url />
 			<organization>Siemens Corporate Technology</organization>
 			<organizationUrl>www.siemens.com</organizationUrl>
 			<roles>
@@ -76,10 +75,10 @@
 			<timezone>+1</timezone>
 		</developer>
 		<developer>
-			<id></id>
+			<id />
 			<name>Dieter Bogdoll</name>
 			<email>dieter.bogdoll@siemens.com</email>
-			<url></url>
+			<url />
 			<organization>Siemens Corporate Technology</organization>
 			<organizationUrl>www.siemens.com</organizationUrl>
 			<roles>
