@@ -33,6 +33,13 @@
 		<version>7</version>
 	</parent>
 
+	<scm>
+		<connection>scm:git:git://github.com/siemens/omniproperties.git</connection>
+		<developerConnection>scm:git:git@github.com:siemens/omniproperties.git</developerConnection>
+		<url>http://github.com/siemens/omniproperties</url>
+		<tag>HEAD</tag>
+	</scm>
+
 	<description>OmniProperties is a typed, lightweight configuration utility with a flavor of dependency injection.</description>
 	<licenses>
 		<license>
