@@ -34,7 +34,7 @@ There is no need to compile OmniProperties yourself, though. We are on Maven Cen
 	<dependency>
 	    <groupId>com.siemens.oss.omniproperties</groupId>
 	    <artifactId>omniproperties</artifactId>
-	    <version>3.0.0</version>
+	    <version>3.1.0</version>
 	</dependency>
 
 to the dependencies.
