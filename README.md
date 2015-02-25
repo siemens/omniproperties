@@ -150,7 +150,7 @@ OmniProperties supports Java-style line comments:
 
 Create and load properties:
 
-	OmniProperties properties = OmniProperties.create().loadFromFile(new File("test.oprops"));
+	OmniProperties properties = OmniProperties.create().readFromFile(new File("test.oprops"));
 
 The `OmniProperties` object offers typed getters for the primitive types plus `String`.
 	
