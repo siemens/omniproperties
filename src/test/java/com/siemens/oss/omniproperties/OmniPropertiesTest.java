@@ -228,6 +228,8 @@ public final class OmniPropertiesTest {
 		Assert.assertArrayEquals(new int[] { 1, 2 }, properties.getObject("ia2", int[].class));
 		Assert.assertArrayEquals(new String[] {}, properties.getObject("sa", String[].class));
 	}
+	
+	
 
 	@Test(expected = WrongClassException.class)
 	public void testIncorrectClass1() throws UnsupportedEncodingException, IOException {

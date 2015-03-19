@@ -371,7 +371,7 @@ final public class ReflectionUtil {
 		}
 		if (foundConstructor == null) {
 			throw new PropertyInstantiationException(
-					"no appropriate constructor found for class " + clazz);
+					"no appropriate constructor found in class " + clazz + " for signature " + Arrays.toString(inputArgTypes));
 		}
 		return (Constructor<T>) foundConstructor;
 	}
