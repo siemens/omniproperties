@@ -33,6 +33,10 @@ public class ExistingFile implements ObjectBuilder<File> {
 		this.file = new File(path);
 
 	}
+	
+	public ExistingFile(final File file) {
+		this.file = file;
+	}
 
 	public ExistingFile(final File dir, final String path) {
 		this.file = new File(dir, path);
