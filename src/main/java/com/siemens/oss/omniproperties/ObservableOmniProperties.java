@@ -32,6 +32,8 @@ import java.util.Set;
  */
 public final class ObservableOmniProperties extends OmniProperties {
 
+
+	private static final long serialVersionUID = 1L;
 	private final OmniProperties properties;
 	private final OmniPropertyObserver observer;
 	

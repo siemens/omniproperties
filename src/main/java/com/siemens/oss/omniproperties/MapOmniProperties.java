@@ -34,6 +34,7 @@ import com.siemens.oss.omniproperties.exceptions.WrongClassException;
  */
 public final class MapOmniProperties extends  OmniProperties {
 
+	private static final long serialVersionUID = 1L;
 	private final Map<String, Object> map = new HashMap<String, Object>();
 
 	/**

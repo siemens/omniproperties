@@ -36,6 +36,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  */
 public final class LockableOmniProperties extends OmniProperties implements ReadWriteLock {
 
+
+	private static final long serialVersionUID = 1L;
 	private final OmniProperties properties;
 	private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 

@@ -38,7 +38,9 @@ import com.siemens.oss.omniproperties.validation.OValValidator;
  * @author Markus Michael Geipel
  * 
  */
-public abstract class OmniProperties implements Map<String, Object> {
+public abstract class OmniProperties implements Map<String, Object>, java.io.Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	public static final String SELF = "self";
 	
