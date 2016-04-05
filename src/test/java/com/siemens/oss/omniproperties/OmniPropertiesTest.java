@@ -279,9 +279,25 @@ public final class OmniPropertiesTest {
 	}
 
 	@Test
-	public void testInclude() throws UnsupportedEncodingException, RecognitionException, IOException {
+	public void testIncludeFile() throws UnsupportedEncodingException, RecognitionException, IOException {
 		final OmniProperties properties = OmniProperties.create();
 		properties.readFromString("include File('src/test/resources/withComments.omniprop');");
+
+		Assert.assertEquals("@51", properties.getString("prefix"));
+	}
+	
+	@Test
+	public void testIncludePath() throws UnsupportedEncodingException, RecognitionException, IOException {
+		final OmniProperties properties = OmniProperties.create();
+		properties.readFromString("include Path('src/test/resources/withComments.omniprop');");
+
+		Assert.assertEquals("@51", properties.getString("prefix"));
+	}
+	
+	@Test
+	public void testIncludePathParts() throws UnsupportedEncodingException, RecognitionException, IOException {
+		final OmniProperties properties = OmniProperties.create();
+		properties.readFromString("include Path({'src/test/resources/', 'withComments.omniprop'});");
 
 		Assert.assertEquals("@51", properties.getString("prefix"));
 	}
