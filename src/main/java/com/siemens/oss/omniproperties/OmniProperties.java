@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Path;
 import java.util.Map;
 import java.util.Properties;
 
@@ -307,11 +308,23 @@ public abstract class OmniProperties implements Map<String, Object>, java.io.Ser
 	 * Read properties from a file. Read properties are <em>added</em> to
 	 * existing properties.
 	 * 
-	 * @param input
+	 * @param fileName
 	 * @throws IOException
 	 */
 	public OmniProperties readFromFile(final String fileName) throws IOException {
 		OmniPropertiesReader.readFromFile(fileName, this);
+		return this;
+	}
+	
+	/**
+	 * Read properties from a {@link Path}. Read properties are <em>added</em> to
+	 * existing properties.
+	 * 
+	 * @param path
+	 * @throws IOException
+	 */
+	public OmniProperties readFromPath(final Path path) throws IOException {
+		OmniPropertiesReader.readFromPath(path, this);
 		return this;
 	}
 

@@ -55,6 +55,7 @@ import java.util.Collections;
 
 import java.io.File;
 import java.io.InputStream;
+import java.nio.file.Path;
 import java.net.URL;
 }
 
@@ -109,6 +110,8 @@ include
     		properties.readFromFile((File) $e.value);
     	} else if ($e.value instanceof InputStream) {
     		properties.readFromStream((InputStream) $e.value);
+    	} else if ($e.value instanceof Path) {
+        properties.readFromPath((Path) $e.value);
     	} else if ($e.value instanceof URL) {
     		properties.readFromUrl((URL) $e.value);
     	} else if ($e.value instanceof String) {

@@ -22,6 +22,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -135,6 +137,24 @@ public final class OmniPropertiesReader {
 	}
 
 	/**
+	 * Read properties from a {@link Path}. Read properties are <em>added</em> to
+	 * existing properties.
+	 * 
+	 * @param input
+	 * @throws IOException
+	 */
+	public static void readFromPath(final Path path,
+			final OmniProperties properties) throws IOException {
+		try (final InputStream input = Files.newInputStream(path)) {
+			readFromStream(input, properties);
+			properties.put(OPROPS_LOCATION, path.toFile());
+		} catch (ParseException e) {
+			throw new ParseException("Error in path '" + path.toString() + "'",
+					e);
+		}
+	}
+	
+	/**
 	 * Read properties from a file. Read properties are <em>added</em> to
 	 * existing properties.
 	 * 
@@ -145,6 +165,7 @@ public final class OmniPropertiesReader {
 			final OmniProperties properties) throws IOException {
 		readFromFile(new File(string), properties);
 	}
+
 
 	private static CommonTreeNodeStream compileAst(final InputStream input)
 			throws IOException, RecognitionException {
