@@ -260,7 +260,7 @@ public abstract class OmniProperties implements Map<String, Object>, java.io.Ser
 	 * Read properties from a {@link File}. Read properties are <em>added</em>
 	 * to existing properties.
 	 * 
-	 * @param input
+	 * @param file
 	 * @throws IOException
 	 */
 	public OmniProperties readFromFile(final File file) throws IOException {
@@ -272,7 +272,7 @@ public abstract class OmniProperties implements Map<String, Object>, java.io.Ser
 	 * Read properties from a string. Read properties are <em>added</em> to
 	 * existing properties.
 	 * 
-	 * @param input
+	 * @param string
 	 * @throws IOException
 	 */
 	public OmniProperties readFromString(final String string) throws IOException {
@@ -284,7 +284,7 @@ public abstract class OmniProperties implements Map<String, Object>, java.io.Ser
 	 * Read properties from a resource. Read properties are <em>added</em> to
 	 * existing properties.
 	 * 
-	 * @param input
+	 * @param resource
 	 * @throws IOException
 	 */
 	public OmniProperties readFromResource(final String resource) throws IOException {
