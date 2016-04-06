@@ -31,6 +31,7 @@ import java.util.Set;
  * 
  */
 public final class ScopedOmniProperties extends OmniProperties {
+	private static final long serialVersionUID = 1L;
 	final private OmniProperties innerProperties;
 	final private OmniProperties outerProperties;
 
