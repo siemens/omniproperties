@@ -242,12 +242,47 @@ The `include` statement allows the inclusion of the contents of any `Map<String,
 `Env` is a builder which reads the environment variables into a map. Thus, the following code does the job:
 
 	include Env();
-	
+
 Furthermore, `Env` offers a constructor which allows for filtering the environment variables based on a regular expression:
 
 	include Env("JAVA.*");
 
 In the same vein `SysProps` loads the system properties.
+
+### Logging changes to Properties
+
+	properties = OmniProperties.create();
+	loggingProperties = LoggingOverserver .wrap(properties);
+	
+	// will produce log output “put(a,10)”
+	loggingProperties.put(“a”, 10);
+
+	// will produce no output”
+	properties.put(“a”, 10);
+
+### Scoping Properties
+
+Assume you have global properties defined by
+
+	a="a string";
+	b=10.0;
+
+and local properties defined by
+
+	a="another string";
+	
+. You can now use `ScopedOmniProperties` to implement scoping:
+
+	globalConfig = OmniProperties.create();
+	localConfig = new ScopedOmniProperties(globalConfig);
+
+	// will return "another string";
+	localConfig.getString("a");
+
+	// will return 10.0
+	localConfig.getFloat("b");
+
+
 
 ### General Purpose Main-Class
 
